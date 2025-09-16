@@ -5,6 +5,15 @@ import random
 import argparse
 import matplotlib.pyplot as plt
 
+# --- ENCODING ---
+alphabet = " " + string.ascii_letters + string.digits + ".,?!"
+
+def random_char():
+    return random.choice(alphabet)
+
+def random_string(length):
+    return "".join(random.choices(alphabet, k= length))
+
 # --- FITNESS ---
 
 def fitness_Matches_Exact(candidate, target):
@@ -15,11 +24,9 @@ def fitness_Matches_Exact(candidate, target):
     """
     exact_matches = 0
     length = min(len(candidate), len(target))
-
     for i in range(length):
         if candidate[i] == target[i]:
             exact_matches += 1
-
     return exact_matches
 
 
